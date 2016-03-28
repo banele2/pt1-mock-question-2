@@ -19,9 +19,42 @@ using namespace std;
 
 
 // ***** DO NOT MODIFY CODE BELOW THIS LINE *****
+
+class Time
+{
+	friend std::ostream& operator<<(ostream& os, const Time& myTime);
+
+public:
+	Time(int h, int m){
+		hours = h;
+		mins = m;
+	};
+	void set(int h, int m){
+		hours = h;
+		mins = m;
+	};
+	void get(int &h, int &min)
+	{
+		min = mins;
+		h = hours;
+	}
+
+	~Time(){};
+
+private:
+	int hours, mins;
+};
+
+ostream& operator<<(ostream& os, const Time& myTime)
+{
+	os << myTime.hours << ":" << myTime.mins ;
+	return os;
+}
+
+
 int main(int argc, char *argv[]) {
 
-	Time myTime(8, 40);									// instantiate time class 
+	Time myTime(8, 40);				        // instantiate time class 
 
 	cout << "CM3 starts at " << myTime << endl;			// demonstrate overloaded stream insertion operator
 
@@ -31,20 +64,10 @@ int main(int argc, char *argv[]) {
 	myTime.get(hours, mins);
 	cout << "Design 1 starts at " << mins << " past " << hours;   // display time in another format
 
+	
 }
 
-class Time
-{
-public:
-	int hours, minutes;
 
-
-	void set(int,int);
-	int get(int, int);
-
-	Time(int h, int m);
-	~Time();
-};
 
 
 
