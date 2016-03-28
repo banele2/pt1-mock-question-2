@@ -32,10 +32,19 @@ int main(int argc, char *argv[]) {
 	cout << "Design 1 starts at " << mins << " past " << hours;   // display time in another format
 
 }
+
 class Time
 {
 public:
-	Time();
+	int hours, minutes;
+
+
+	void set(int,int);
+	int get(int, int);
+
+	Time(int h, int m);
 	~Time();
 };
+
+
 
