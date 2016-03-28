@@ -22,33 +22,54 @@ using namespace std;
 
 class Time
 {
-	friend std::ostream& operator<<(ostream& os, const Time& myTime);
+	friend std::ostream& operator<<(ostream& os, const Time& myTime);  
 
 public:
+
 	Time(int h, int m){
 		hours = h;
 		mins = m;
 	};
+
+	
+
 	void set(int h, int m){
-		hours = h;
-		mins = m;
+
+		if (m >=0 && m <=59 && h>=0 && h<=23){
+			hours = h;
+			mins = m;
+		}
+		
 	};
 	void get(int &h, int &min)
 	{
 		min = mins;
 		h = hours;
 	}
+	Time operator++(int); // postfix
 
 	~Time(){};
 
 private:
 	int hours, mins;
+
+	
 };
 
 ostream& operator<<(ostream& os, const Time& myTime)
 {
 	os << myTime.hours << ":" << myTime.mins ;
 	return os;
+}
+
+
+Time Time::operator++(int)
+{
+	// Create a temporary variable with our current digit
+	Time cResult = *this;
+	
+	++mins;
+	return cResult;       // return saved state
 }
 
 
