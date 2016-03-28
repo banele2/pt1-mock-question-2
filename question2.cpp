@@ -68,7 +68,20 @@ Time Time::operator++(int)
 	// Create a temporary variable with our current digit
 	Time cResult = *this;
 	
-	++mins;
+		++mins;
+
+		if (mins == 60 ){
+			
+				mins = 0;
+				hours++;
+			
+				
+		}
+		
+		if (hours == 24){
+			hours = 0;
+		}
+
 	return cResult;       // return saved state
 }
 
