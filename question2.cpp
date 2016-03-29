@@ -66,7 +66,7 @@ ostream& operator<<(ostream& os, const Time& myTime)
 Time Time::operator++(int)
 {
 	// Create a temporary variable with our current digit
-	Time cResult = *this;
+	Time Result(hours, mins);
 	
 		++mins;
 
@@ -82,7 +82,7 @@ Time Time::operator++(int)
 			hours = 0;
 		}
 
-	return cResult;       // return saved state
+	return Result;       // return saved state
 }
 
 
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 	myTime.get(hours, mins);
 	cout << "Design 1 starts at " << mins << " past " << hours;   // display time in another format
 
-	
+	system("pause");
 }
 
 
